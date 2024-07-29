@@ -1,8 +1,6 @@
 from setuptools import setup, find_packages
 from typing import List
 
-HYPHEN_E_DOT = '-e .'
-
 def get_requirements(file_path: str) -> List[str]:
     """
     This function returns a list of requirements
@@ -13,14 +11,11 @@ def get_requirements(file_path: str) -> List[str]:
         requirements = file_obj.readlines()
         requirements = [req.strip() for req in requirements if req.strip() and not req.startswith('#')]
 
-        if HYPHEN_E_DOT in requirements:
-            requirements.remove(HYPHEN_E_DOT)
-
     return requirements
 
 __version__ = "0.0.4"
 REPO_NAME = "Phishing_proejct_end_to_end"
-PKG_NAME = "Mongo-connect"
+PKG_NAME = "Phishingdetectiondomain"
 AUTHOR_USER_NAME = "Deepak singh"
 AUTHOR_EMAIL = "itsdeepaksingh00@gmail.com"
 
@@ -28,7 +23,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name=PKG_NAME,
+    name=PKG_NAME,  # Using the new package name
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
@@ -42,4 +37,5 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     install_requires=get_requirements("./requirements.txt"),  # Ensure this file contains your dependencies
+    license_files=('LICENSE.txt',),  # Use license_files instead of license_file
 )
